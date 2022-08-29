@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2210885A-A139-4DEF-9C5D-06C1DB6E05A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Core\Application.csproj", "{2210885A-A139-4DEF-9C5D-06C1DB6E05A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceMock", "ServiceMock\ServiceMock.csproj", "{A22CBF77-C93D-4510-A468-4991BDF24463}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.ProtoBuf", "Web.ProtoBuf\GWB.Example.Web.ProtoBuf.csproj", "{B91A18B3-74AB-40A2-BFDA-B079BF139275}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.Api.gRPC", "Web.Api.gRPC\GWB.Example.Web.Api.gRPC.csproj", "{F10C32E4-2690-46CF-B00D-D722D68E21FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E37BEE80-F84F-4814-98A6-53254F786676}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2210885A-A139-4DEF-9C5D-06C1DB6E05A9} = {E37BEE80-F84F-4814-98A6-53254F786676}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {052D635C-30D8-4AF5-ABD8-F3D36DC1E327}

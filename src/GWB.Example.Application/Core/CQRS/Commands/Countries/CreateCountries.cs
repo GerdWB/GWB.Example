@@ -9,7 +9,7 @@ public static partial class Countries
 {
     public static class Create
     {
-        public record Command(IEnumerable<Country> Countries) : ICommand;
+        public sealed record Command(IEnumerable<Country> Countries) : ICommand;
 
         public class Handler : ICommandHandler<Command>
         {

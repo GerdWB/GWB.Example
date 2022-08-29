@@ -9,7 +9,7 @@ public static partial class Countries
 {
     public static class Update
     {
-        public record Command(Country Country) : ICommand;
+        public sealed record Command(Country Country) : ICommand;
 
         public class Handler : ICommandHandler<Command>
         {
