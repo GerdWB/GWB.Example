@@ -1,4 +1,6 @@
-﻿namespace GWB.Example.Application.Core._DIRegistration;
+﻿// ReSharper disable UnusedMember.Global
+
+namespace GWB.Example.Application.Core._DIRegistration;
 
 using System.Reflection;
 using Behaviors;

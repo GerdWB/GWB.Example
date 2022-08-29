@@ -1,6 +1,6 @@
 ﻿namespace GWB.Example.Application.Core.Domain.Validators;
 
-using Domain;
+using Entities;
 using FluentValidation;
 
 public sealed class CountryValidator : AbstractValidator<Country>

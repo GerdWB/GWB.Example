@@ -1,6 +1,6 @@
 ﻿namespace GWB.Example.Application.Core.Services;
 
-using Domain;
+using Domain.Entities;
 using Results;
 
 public interface ICountryQueryService

@@ -1,8 +1,9 @@
-﻿namespace GWB.Example.Application.Core.Queries;
+﻿// ReSharper disable UnusedMember.Global
 
-using Domain;
-using GWB.Example.Application.Core.Abstractions;
-using MediatR;
+namespace GWB.Example.Application.Core.Queries.Countries;
+
+using Abstractions;
+using Domain.Entities;
 using Results;
 using Services;
 
@@ -10,7 +11,7 @@ public static partial class Countries
 {
     public static class GetAll
     {
-        public record Query : IQuery<IEnumerable<Country>>; 
+        public record Query : IQuery<IEnumerable<Country>>;
 
         public class Handler : IQueryHandler<Query, IEnumerable<Country>>
         {

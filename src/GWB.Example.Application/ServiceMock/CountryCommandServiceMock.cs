@@ -1,6 +1,6 @@
 ﻿namespace GWB.Example.ServiceMock;
 
-using Application.Core.Domain;
+using Application.Core.Domain.Entities;
 using Application.Core.Results;
 using Application.Core.Services;
 

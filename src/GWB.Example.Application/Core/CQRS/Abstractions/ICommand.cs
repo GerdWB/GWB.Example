@@ -1,7 +1,8 @@
 ﻿namespace GWB.Example.Application.Core.Abstractions;
 
-using GWB.Example.Application.Core.Results;
 using MediatR;
+using Results;
 
 public interface ICommand : IRequest<CommandResult>
-{ }
+{
+}

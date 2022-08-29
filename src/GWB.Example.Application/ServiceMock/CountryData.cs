@@ -1,14 +1,14 @@
 ﻿namespace GWB.Example.ServiceMock;
 
 using System.Collections.Concurrent;
-using Application.Core.Domain;
+using Application.Core.Domain.Entities;
 
 internal static class CountryData
 {
     public static IReadOnlyList<Country> Countries => _countries.Values.ToList().AsReadOnly();
 
-    private static readonly ConcurrentDictionary<Guid, Country>
-        _countries = new(); // C# 9 syntax "Improved target typing"
+    // ReSharper disable once InconsistentNaming
+    private static readonly ConcurrentDictionary<Guid, Country> _countries = new();
 
     static CountryData()
     {

@@ -1,9 +1,9 @@
-﻿namespace CountryService.Web.Services;
+﻿namespace GWB.Example.Web.Api.gRPC.Services;
 
+using Example.gRPC;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using GWB.Example.gRPC;
-using static GWB.Example.gRPC.CountryService;
+using static Example.gRPC.CountryService;
 
 public class CountryGrpcService : CountryServiceBase
 {

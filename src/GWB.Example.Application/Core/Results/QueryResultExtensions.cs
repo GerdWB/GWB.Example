@@ -6,7 +6,7 @@ public static class QueryResultExtensions
     {
         switch (queryResult)
         {
-            case QuerySuccess<T> _:
+            case QuerySuccess<T>:
                 return queryResult;
             case QueryFailed<T> failure:
                 onFailure(failure);
@@ -23,7 +23,7 @@ public static class QueryResultExtensions
             case QuerySuccess<T> success:
                 onSuccess(success);
                 return queryResult;
-            case QueryFailed<T> _:
+            case QueryFailed<T>:
                 return queryResult;
             default:
                 throw new Exception("unexpected result");

@@ -1,7 +1,9 @@
-﻿namespace GWB.Example.Application.Core.Commands;
+﻿// ReSharper disable UnusedMember.Global
 
-using Domain;
-using GWB.Example.Application.Core.Abstractions;
+namespace GWB.Example.Application.Core.Commands.Countries;
+
+using Abstractions;
+using Domain.Entities;
 using Results;
 using Services;
 

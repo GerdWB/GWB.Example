@@ -1,4 +1,4 @@
-using CountryService.Web.Services;
+using GWB.Example.Web.Api.gRPC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

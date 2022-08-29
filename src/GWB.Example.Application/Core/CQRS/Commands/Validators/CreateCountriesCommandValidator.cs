@@ -1,9 +1,8 @@
-﻿using GWB.Example.Application.Core.Commands;
+﻿namespace GWB.Example.Application.Core.Commands.Validators;
 
-namespace GWB.Example.Application.Core.CQRS.Commands.Validators;
-
+using Countries;
+using Domain.Validators;
 using FluentValidation;
-using GWB.Example.Application.Core.Domain.Validators;
 
 public sealed class CreateCountriesCommandValidator : AbstractValidator<Countries.Create.Command>
 {

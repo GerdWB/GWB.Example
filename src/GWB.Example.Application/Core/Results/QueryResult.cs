@@ -21,7 +21,7 @@ public record QuerySuccess<T>(T Value) : QueryResult<T>(true)
     public static implicit operator QuerySuccess<T>(T value) =>
         value is not null
             ? new QuerySuccess<T>(value)
-            : throw new ArgumentNullException(nameof(Value));
+            : throw new ArgumentNullException(nameof(value));
 
     public T Value { get; init; } = Value ?? throw new ArgumentNullException(nameof(Value));
 }
