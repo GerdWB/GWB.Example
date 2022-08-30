@@ -1,6 +1,5 @@
 ﻿namespace GWB.Example.Application.Core.Commands.Validators;
 
-using Countries;
 using Domain.Validators;
 using FluentValidation;
 

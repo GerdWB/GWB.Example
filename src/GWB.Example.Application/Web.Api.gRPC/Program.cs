@@ -1,5 +1,8 @@
+using System.IO.Compression;
+using Grpc.Net.Compression;
 using GWB.Example.Application.Core._DIRegistration;
 using GWB.Example.ServiceMock._DIRegistration;
+using GWB.Example.Web.Api.gRPC.Common;
 using GWB.Example.Web.Api.gRPC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,13 +11,26 @@ var builder = WebApplication.CreateBuilder(args);
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
 // Add services to the container.
-builder.Services.AddGrpc();
+builder.Services.AddGrpc(options =>
+{
+    options.MaxReceiveMessageSize = 2097152; // 2 MB
+    options.MaxSendMessageSize = 2097152; // 2 MB
+    options.CompressionProviders = new List<ICompressionProvider>
+    {
+        new BrotliCompressionProvider(CompressionLevel.Optimal) // br
+    };
+    // grpcaccept-encoding, and must match the compression provider declared in CompressionProviders collection
+    options.ResponseCompressionAlgorithm = "br";
+    options.ResponseCompressionLevel = CompressionLevel.Optimal; // compression level used if not set on the provider
+});
+builder.Services.AddGrpcReflection();
+
 builder.Services.AddCommandsAndQueries();
 builder.Services.AddCountryServiceMocks();
 
 
 var app = builder.Build();
-
+app.MapGrpcReflectionService();
 app.MapGrpcService<CountryGrpcService>();
 
 // Configure the HTTP request pipeline.
