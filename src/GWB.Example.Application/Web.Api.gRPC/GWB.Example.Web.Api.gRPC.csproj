@@ -7,10 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Collection" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.EnumMapping" Version="2.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.48.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
    <ItemGroup>
+    <ProjectReference Include="..\Core\Application.csproj" />
+    <ProjectReference Include="..\ServiceMock\ServiceMock.csproj" />
     <ProjectReference Include="..\Web.ProtoBuf\GWB.Example.Web.ProtoBuf.csproj" />
   </ItemGroup>
 

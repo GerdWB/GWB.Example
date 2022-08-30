@@ -9,11 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\Todo.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\Countries.proto" GrpcServices="Both" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.48.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿// ReSharper disable UnusedMember.Global
 
-namespace GWB.Example.Application.Core.Queries.Countries;
+namespace GWB.Example.Application.Core.Queries;
 
 using Domain.Entities;
 using MediatR;

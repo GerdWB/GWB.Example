@@ -1,3 +1,5 @@
+using GWB.Example.Application.Core._DIRegistration;
+using GWB.Example.ServiceMock._DIRegistration;
 using GWB.Example.Web.Api.gRPC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+builder.Services.AddCommandsAndQueries();
+builder.Services.AddCountryServiceMocks();
+
 
 var app = builder.Build();
 
