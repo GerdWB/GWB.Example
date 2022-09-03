@@ -2,17 +2,17 @@
 
 public abstract record QueryResult<T>(bool IsSuccess)
 {
-    public static implicit operator QueryResult<T>(Exception exception) => new QueryFailed<T>(exception.Message);
+    public static implicit operator QueryResult<T>(Exception exception) => new QueryFailed<T>(new Error(exception));
 
     public static implicit operator QueryResult<T>(T value) =>
         value is not null
             ? new QuerySuccess<T>(value)
-            : new QueryFailed<T>("Result of query is null");
+            : new QueryFailed<T>(new Error("Result of query is null"));
 
     public bool IsFailure => !IsSuccess;
 }
 
-public record QueryFailed<T>(string Reason) : QueryResult<T>(false);
+public record QueryFailed<T>(Error Error) : QueryResult<T>(false);
 
 public record QuerySuccess<T>(T Value) : QueryResult<T>(true)
 {
