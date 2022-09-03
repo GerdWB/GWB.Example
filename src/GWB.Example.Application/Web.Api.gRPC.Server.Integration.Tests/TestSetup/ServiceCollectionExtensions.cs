@@ -1,4 +1,4 @@
-﻿namespace Web.Api.gRPC.Server.Integration.Tests;
+﻿namespace Web.Api.gRPC.Server.Functional.Tests.TestSetup;
 
 using Microsoft.Extensions.DependencyInjection;
 

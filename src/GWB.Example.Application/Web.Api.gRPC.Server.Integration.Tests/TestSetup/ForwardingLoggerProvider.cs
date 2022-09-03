@@ -16,10 +16,10 @@
 
 #endregion
 
-namespace Tests.Server.IntegrationTests.Helpers;
+
+namespace Web.Api.gRPC.Server.Functional.Tests.TestSetup;
 
 using Microsoft.Extensions.Logging;
-using Web.Api.gRPC.Server.Integration.Tests.TestSetup;
 
 internal class ForwardingLoggerProvider : ILoggerProvider
 {

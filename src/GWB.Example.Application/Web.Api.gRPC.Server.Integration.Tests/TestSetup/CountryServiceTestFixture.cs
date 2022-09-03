@@ -1,4 +1,4 @@
-﻿namespace Web.Api.gRPC.Server.Integration.Tests.TestSetup;
+﻿namespace Web.Api.gRPC.Server.Functional.Tests.TestSetup;
 
 using GWB.Example.Application.Core.Services;
 using GWB.Example.ServiceMock;

@@ -13,13 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.Api.gRPC", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E37BEE80-F84F-4814-98A6-53254F786676}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Api.gRPC.Server.Integration.Tests", "Web.Api.gRPC.Server.Integration.Tests\Web.Api.gRPC.Server.Integration.Tests.csproj", "{06E3C802-550E-4C20-8BDE-6ED339DC424C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Api.gRPC.Server.Functional.Tests", "Web.Api.gRPC.Server.Integration.Tests\Web.Api.gRPC.Server.Functional.Tests.csproj", "{06E3C802-550E-4C20-8BDE-6ED339DC424C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{128D2F62-1C21-4342-8893-B1D2318328D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.Blazor", "GWB.Example.Web.Blazor\GWB.Example.Web.Blazor.csproj", "{BFE17235-2593-43EC-8E2D-AFF34952A7C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCClient", "gRPCClient\gRPCClient.csproj", "{A58A4DE4-9270-4026-B78C-AFCA3D1EDB28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRPCClient", "gRPCClient\gRPCClient.csproj", "{A58A4DE4-9270-4026-B78C-AFCA3D1EDB28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

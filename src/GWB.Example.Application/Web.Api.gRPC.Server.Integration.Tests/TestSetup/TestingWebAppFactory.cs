@@ -1,6 +1,5 @@
-﻿namespace Web.Api.gRPC.Server.Integration.Tests.TestSetup;
+﻿namespace Web.Api.gRPC.Server.Functional.Tests.TestSetup;
 
-using global::Tests.Server.IntegrationTests.Helpers;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Microsoft.AspNetCore.Hosting;
