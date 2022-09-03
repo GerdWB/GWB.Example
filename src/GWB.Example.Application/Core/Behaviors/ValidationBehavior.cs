@@ -1,9 +1,7 @@
 ﻿namespace GWB.Example.Application.Core.Behaviors;
 
-using Abstractions;
 using FluentValidation;
 using MediatR;
-using Results;
 using ValidationException = Exceptions.ValidationException;
 
 public sealed class CommandsValidationBehavior<TRequest, TResponse>

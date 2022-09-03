@@ -30,8 +30,12 @@ builder.Services.AddCountryServiceMocks();
 
 
 var app = builder.Build();
+
+app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
+
 app.MapGrpcReflectionService();
-app.MapGrpcService<CountryGrpcService>();
+app.MapGrpcService<CountryGrpcService>().EnableGrpcWeb();
+
 
 // Configure the HTTP request pipeline.
 app.MapGet("/",
@@ -39,3 +43,9 @@ app.MapGet("/",
         "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();
+
+
+// needed for testing, do not remove
+public partial class Program
+{
+}

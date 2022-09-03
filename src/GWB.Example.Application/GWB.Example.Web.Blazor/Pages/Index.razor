@@ -1,0 +1,15 @@
+﻿@page "/"
+<div>
+<p><br /></p>
+<p><MudButton OnClick="GetDate" Color="Color.Secondary" Variant="@Variant.Filled" StartIcon="@Icons.Rounded.Timer3">Get Date</MudButton></p>
+<p>@currentDate</p>
+</div>
+@code {
+    DateTime currentDate = DateTime.UtcNow;
+    bool is_running;
+    Task GetDate()
+    {
+        currentDate = DateTime.UtcNow;
+        return Task.CompletedTask;
+    }
+}

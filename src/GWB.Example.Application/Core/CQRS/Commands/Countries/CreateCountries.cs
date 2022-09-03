@@ -2,11 +2,6 @@
 
 namespace GWB.Example.Application.Core.Commands;
 
-using Abstractions;
-using Domain.Entities;
-using Results;
-using Services;
-
 public static partial class Countries
 {
     public static class Create

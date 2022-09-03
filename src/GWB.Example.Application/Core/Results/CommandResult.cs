@@ -1,6 +1,6 @@
 ﻿namespace GWB.Example.Application.Core.Results;
 
-public abstract record CommandResult(bool IsSuccess) 
+public abstract record CommandResult(bool IsSuccess)
 {
     public bool IsFailure => !IsSuccess;
 }

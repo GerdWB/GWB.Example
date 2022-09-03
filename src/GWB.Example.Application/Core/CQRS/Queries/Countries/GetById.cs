@@ -2,10 +2,7 @@
 
 namespace GWB.Example.Application.Core.Queries;
 
-using Domain.Entities;
 using MediatR;
-using Results;
-using Services;
 
 public static partial class Countries
 {
