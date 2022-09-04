@@ -8,9 +8,9 @@ public class ErrorTests
 {
     private static int GetCurrentSourceFileLineNumber([CallerLineNumber] int sourceLineNumber = 0) => sourceLineNumber;
 
-    private static string GetThisFilePath([CallerFilePath] string path = null) => path;
+    private static string? GetThisFilePath([CallerFilePath] string? path = null) => path;
 
-    private static string GetThisMemberName([CallerMemberName] string memberName = null) => memberName;
+    private static string? GetThisMemberName([CallerMemberName] string? memberName = null) => memberName;
 
 
     [Fact]
@@ -43,7 +43,7 @@ public class ErrorTests
         error.Exception.Should().NotBeNull();
         error.Exception.Should().BeSameAs(exception);
         error.Message.Should().NotBeNull();
-        error.Message.Should().BeSameAs(exception.Message);
+        error.Message.Should().Be(exception.Message);
     }
 
 
@@ -73,6 +73,6 @@ public class ErrorTests
         var error = new Error(message);
 
         // Assert
-        error.Message.Should().BeSameAs(message);
+        error.Message.Should().Be(message);
     }
 }

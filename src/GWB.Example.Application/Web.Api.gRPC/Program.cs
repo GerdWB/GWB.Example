@@ -17,9 +17,10 @@ builder.Services.AddGrpc(options =>
     options.MaxSendMessageSize = 2097152; // 2 MB
     options.CompressionProviders = new List<ICompressionProvider>
     {
+        new GzipCompressionProvider(CompressionLevel.Optimal), // gzip
         new BrotliCompressionProvider(CompressionLevel.Optimal) // br
     };
-    // grpcaccept-encoding, and must match the compression provider declared in CompressionProviders collection
+    // grpc accept-encoding, and must match the compression provider declared in CompressionProviders collection
     options.ResponseCompressionAlgorithm = "br";
     options.ResponseCompressionLevel = CompressionLevel.Optimal; // compression level used if not set on the provider
 });
@@ -41,7 +42,6 @@ app.MapGrpcService<CountryGrpcService>().EnableGrpcWeb();
 app.MapGet("/",
     handler: () =>
         "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-
 app.Run();
 
 

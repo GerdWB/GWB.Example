@@ -2,7 +2,7 @@
 
 using System.Runtime.CompilerServices;
 
-public class Error
+public record Error
 {
     public Error(string message,
         [CallerMemberName] string memberName = "",
