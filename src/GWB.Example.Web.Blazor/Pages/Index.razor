@@ -2,10 +2,10 @@
 
 @using GWB.Example.Application.Core.Domain.Entities
 @using GWB.Example.Application.Core.Results
-@using GWB.Example.Application.Core.Services
+@using GWB.Example.Web.Blazor.Services
 
 
-@inject ICountryQueryService CountryQueryServiceMock
+@inject CountryService CountryService
 
 <MudTable Items="@Countries.Take(3)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
@@ -30,56 +30,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await CountryQueryServiceMock.GetAllAsync();
-
-        if (result is QuerySuccess<IEnumerable<Country>> success)
-            Countries = success.Value;
+        Countries = await CountryService.GetAllAsync();
     }
 }
-
-
-
-
-@*@page "/"
-
-
-<div>
- 
-
-    <MudTable Items="@Elements.Take(3)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
-        <HeaderContent>
-            <MudTh>Id</MudTh>
-            <MudTh>Name</MudTh>
-            <MudTh>Description</MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="Id">@context.Number</MudTd>
-            <MudTd DataLabel="Sign">@context.Sign</MudTd>
-            <MudTd DataLabel="Name">@context.Name</MudTd>
-            <MudTd DataLabel="Position" HideSmall="_hidePosition">@context.Position</MudTd>
-            <MudTd DataLabel="Molar mass">@context.Molar</MudTd>
-        </RowTemplate>
-    </MudTable>
-
-    <MudSwitch @bind-Checked="_hidePosition">Hide <b>position</b> when Breakpoint=Xs</MudSwitch>
-    <MudSwitch @bind-Checked="_loading">Show Loading</MudSwitch>
-
-</div>
-
-@code {
-
-    private IEnumerable<Country> Elements = new List<Country>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        Elements = await CountryQueryServiceMock.GetAllAsync().FromProto();
-    }
-    
-    //DateTime currentDate = DateTime.UtcNow;
-    //bool is_running;
-    //Task GetDate()
-    //{
-    //    currentDate = DateTime.UtcNow;
-    //    return Task.CompletedTask;
-    //}
-}*@

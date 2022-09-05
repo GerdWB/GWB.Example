@@ -16,7 +16,7 @@ public class CountryServiceFunctionalTests : IClassFixture<CountryServiceTestFix
     public void GetAll_Should_Return_A_CountryListReply()
     {
         // Arrange
-        var client = new CountryService.CountryServiceClient(_channel);
+        var client = new CountryGrpcService.CountryGrpcServiceClient(_channel);
 
         // Act
         var response = client.GetAll(new Empty());
@@ -31,7 +31,7 @@ public class CountryServiceFunctionalTests : IClassFixture<CountryServiceTestFix
     public async Task GetAllAsync_Should_Return_A_CountryListReply()
     {
         // Arrange
-        var client = new CountryService.CountryServiceClient(_channel);
+        var client = new CountryGrpcService.CountryGrpcServiceClient(_channel);
 
         // Act
         var response = await client.GetAllAsync(new Empty());

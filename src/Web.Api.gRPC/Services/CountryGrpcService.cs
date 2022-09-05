@@ -7,9 +7,9 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MediatR;
 using ProtoBuf.Mappings;
-using static Example.gRPC.CountryService;
+using static Example.gRPC.CountryGrpcService;
 
-public class CountryGrpcService : CountryServiceBase
+public class CountryGrpcService : CountryGrpcServiceBase
 {
     private readonly ISender _sender;
 

@@ -17,7 +17,7 @@ var channel = GrpcChannel.ForAddress("https://localhost:7106",
         LoggerFactory = loggerFactory
     });
 
-var countryClient = new CountryServiceClient(channel);
+var countryClient = new CountryGrpcServiceClient(channel);
 var resultCall = countryClient.GetAll(new Empty());
 
 

@@ -3,7 +3,7 @@ package gRPCDemo.v1;
 option csharp_namespace = "GWB.Example.gRPC";
 import "google/protobuf/empty.proto";
 
-service CountryService {
+service CountryGrpcService {
     rpc GetAll(google.protobuf.Empty) returns (CountryListReply) {}
     rpc Get(CountryIdRequest) returns (CountryReply) {}
     rpc Delete(CountryIdRequest) returns (google.protobuf.Empty) {}

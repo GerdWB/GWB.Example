@@ -23,17 +23,30 @@ builder.Services.AddGrpc(options =>
     // grpc accept-encoding, and must match the compression provider declared in CompressionProviders collection
     options.ResponseCompressionAlgorithm = "br";
     options.ResponseCompressionLevel = CompressionLevel.Optimal; // compression level used if not set on the provider
+    options.EnableDetailedErrors = true;
 });
 builder.Services.AddGrpcReflection();
 
 builder.Services.AddCommandsAndQueries();
 builder.Services.AddCountryServiceMocks();
 
-
+const string corsPolicy = "_corsPolicy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicy,
+        configurePolicy: policy =>
+        {
+            policy.WithOrigins("https://localhost:7247",
+                    "http://localhost:5152")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 
+app.UseCors(corsPolicy);
+app.UseHttpsRedirection();
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
-
 app.MapGrpcReflectionService();
 app.MapGrpcService<CountryGrpcService>().EnableGrpcWeb();
 
