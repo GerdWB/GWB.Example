@@ -11,7 +11,9 @@ public partial class Index
     private bool _hidePosition;
     private bool _loading;
 
+#pragma warning disable CS8618
     [Inject] private CountryService CountryService { get; set; }
+#pragma warning restore CS8618
 
     protected override async Task OnInitializedAsync()
     {

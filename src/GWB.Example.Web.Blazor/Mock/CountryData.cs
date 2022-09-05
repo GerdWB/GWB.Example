@@ -1,4 +1,4 @@
-﻿namespace GWB.Example.ServiceMock;
+﻿namespace GWB.Example.Web.Blazor.Mock;
 
 using System.Collections.Concurrent;
 using Application.Core.Domain.Entities;

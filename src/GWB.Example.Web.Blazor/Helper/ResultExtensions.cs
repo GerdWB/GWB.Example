@@ -6,16 +6,11 @@ public static class ResultExtensions
 {
     public static T HandleResult<T>(this QueryResult<T> result)
     {
-        if (result is QuerySuccess<T> success)
+        return result switch
         {
-            return success.Value;
-        }
-
-        if (result is QueryFailed<T> failure)
-        {
-            throw new Exception(failure.Error.Message);
-        }
-
-        throw new Exception("Unknown");
+            QuerySuccess<T> success => success.Value,
+            QueryFailed<T> failure => throw new Exception(failure.Error.Message),
+            _ => throw new Exception("Unknown")
+        };
     }
 }

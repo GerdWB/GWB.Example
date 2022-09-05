@@ -17,7 +17,6 @@ builder.Services.AddScoped(_ => new HttpClient
 builder.Services.AddMudServices();
 builder.Services.AddScoped<CountryService>();
 
-var httpHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler());
 builder.Services
     .AddGrpcClient<CountryGrpcService.CountryGrpcServiceClient>(o => { o.Address = new Uri("https://localhost:7106"); })
     .ConfigurePrimaryHttpMessageHandler(() => new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
