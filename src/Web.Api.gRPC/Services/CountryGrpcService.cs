@@ -1,22 +1,19 @@
 ﻿namespace GWB.Example.Web.Api.gRPC.Services;
 
 using Application.Core.Queries;
+using ErrorHandling;
 using Example.gRPC;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using GWB.Example.Web.Api.gRPC.ErrorHandling;
-using GWB.Example.Web.ProtoBuf.Mappings;
 using MediatR;
+using ProtoBuf.Mappings;
 using static Example.gRPC.CountryService;
 
 public class CountryGrpcService : CountryServiceBase
 {
     private readonly ISender _sender;
 
-    public CountryGrpcService(ISender sender)
-    {
-        _sender = sender;
-    }
+    public CountryGrpcService(ISender sender) => _sender = sender;
 
     public override Task<CountryCreationReply> Create(CountryCreationRequest request, ServerCallContext context)
         => throw new RpcException(new Status(StatusCode.Unimplemented, ""));
@@ -24,7 +21,7 @@ public class CountryGrpcService : CountryServiceBase
     public override Task<Empty> Delete(CountryIdRequest request, ServerCallContext context)
         => throw new RpcException(new Status(StatusCode.Unimplemented, ""));
 
-    public override async Task<CountryReply> Get(
+    public override Task<CountryReply> Get(
         CountryIdRequest request,
         ServerCallContext context)
         => throw new RpcException(new Status(StatusCode.Unimplemented, ""));
@@ -37,7 +34,7 @@ public class CountryGrpcService : CountryServiceBase
         return queryResult.HandleResult().ToProto();
     }
 
-    public override async Task<Empty> Update(
+    public override Task<Empty> Update(
         CountryUpdateRequest request,
         ServerCallContext context)
         => throw new RpcException(new Status(StatusCode.Unimplemented, ""));

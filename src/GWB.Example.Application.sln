@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Core\Application.csproj", "{2210885A-A139-4DEF-9C5D-06C1DB6E05A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceMock", "ServiceMock\ServiceMock.csproj", "{A22CBF77-C93D-4510-A468-4991BDF24463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountryServicesMocks", "Mocks\CountryServicesMocks\CountryServicesMocks.csproj", "{A22CBF77-C93D-4510-A468-4991BDF24463}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.ProtoBuf", "Web.ProtoBuf\GWB.Example.Web.ProtoBuf.csproj", "{B91A18B3-74AB-40A2-BFDA-B079BF139275}"
 EndProject
@@ -13,15 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.Api.gRPC", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E37BEE80-F84F-4814-98A6-53254F786676}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Api.gRPC.Server.Functional.Tests", "Web.Api.gRPC.Server.Integration.Tests\Web.Api.gRPC.Server.Functional.Tests.csproj", "{06E3C802-550E-4C20-8BDE-6ED339DC424C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{128D2F62-1C21-4342-8893-B1D2318328D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GWB.Example.Web.Blazor", "GWB.Example.Web.Blazor\GWB.Example.Web.Blazor.csproj", "{BFE17235-2593-43EC-8E2D-AFF34952A7C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRPCClient", "gRPCClient\gRPCClient.csproj", "{A58A4DE4-9270-4026-B78C-AFCA3D1EDB28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Results.Tests", "Application.Results.Tests\Application.Results.Tests.csproj", "{9FB743F2-76D3-4BCC-B210-913DA51F090E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Results.Tests", "Tests\Application.Results.Tests\Application.Results.Tests.csproj", "{2FA384D6-548F-4CC7-AFA2-48DCBDB1A937}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Api.gRPC.Server.Functional.Tests", "Tests\Web.Api.gRPC.Server.Functional.Tests\Web.Api.gRPC.Server.Functional.Tests.csproj", "{354141DD-0329-4FE1-9183-144BD267BED5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,6 @@ Global
 		{F10C32E4-2690-46CF-B00D-D722D68E21FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F10C32E4-2690-46CF-B00D-D722D68E21FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F10C32E4-2690-46CF-B00D-D722D68E21FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06E3C802-550E-4C20-8BDE-6ED339DC424C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06E3C802-550E-4C20-8BDE-6ED339DC424C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06E3C802-550E-4C20-8BDE-6ED339DC424C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06E3C802-550E-4C20-8BDE-6ED339DC424C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BFE17235-2593-43EC-8E2D-AFF34952A7C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BFE17235-2593-43EC-8E2D-AFF34952A7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFE17235-2593-43EC-8E2D-AFF34952A7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,10 +53,14 @@ Global
 		{A58A4DE4-9270-4026-B78C-AFCA3D1EDB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A58A4DE4-9270-4026-B78C-AFCA3D1EDB28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A58A4DE4-9270-4026-B78C-AFCA3D1EDB28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FB743F2-76D3-4BCC-B210-913DA51F090E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FB743F2-76D3-4BCC-B210-913DA51F090E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FB743F2-76D3-4BCC-B210-913DA51F090E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FB743F2-76D3-4BCC-B210-913DA51F090E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA384D6-548F-4CC7-AFA2-48DCBDB1A937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA384D6-548F-4CC7-AFA2-48DCBDB1A937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA384D6-548F-4CC7-AFA2-48DCBDB1A937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA384D6-548F-4CC7-AFA2-48DCBDB1A937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354141DD-0329-4FE1-9183-144BD267BED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354141DD-0329-4FE1-9183-144BD267BED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354141DD-0329-4FE1-9183-144BD267BED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354141DD-0329-4FE1-9183-144BD267BED5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,7 +70,7 @@ Global
 		{B91A18B3-74AB-40A2-BFDA-B079BF139275} = {128D2F62-1C21-4342-8893-B1D2318328D9}
 		{F10C32E4-2690-46CF-B00D-D722D68E21FA} = {128D2F62-1C21-4342-8893-B1D2318328D9}
 		{BFE17235-2593-43EC-8E2D-AFF34952A7C1} = {128D2F62-1C21-4342-8893-B1D2318328D9}
-		{9FB743F2-76D3-4BCC-B210-913DA51F090E} = {E37BEE80-F84F-4814-98A6-53254F786676}
+		{2FA384D6-548F-4CC7-AFA2-48DCBDB1A937} = {E37BEE80-F84F-4814-98A6-53254F786676}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {052D635C-30D8-4AF5-ABD8-F3D36DC1E327}
