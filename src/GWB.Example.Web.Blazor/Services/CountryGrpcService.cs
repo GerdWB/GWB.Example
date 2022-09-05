@@ -4,21 +4,17 @@ using Application.Core.Domain.Entities;
 using Application.Core.Results;
 using Google.Protobuf.WellKnownTypes;
 using gRPC;
-using Grpc.Net.Client;
 using ProtoBuf.Mappings;
 
 public class CountryService
 {
-    private readonly GrpcChannel grpcChannel;
+    private readonly CountryGrpcService.CountryGrpcServiceClient _countryGrpcService;
 
-    public CountryService(GrpcChannel grpcChannel)
-        => this.grpcChannel = grpcChannel;
+    public CountryService(CountryGrpcService.CountryGrpcServiceClient client) => _countryGrpcService = client;
 
     public async Task<IEnumerable<Country>> GetAllAsync()
     {
-        var client = new CountryGrpcService.CountryGrpcServiceClient(grpcChannel);
-        var response = await client.GetAllAsync(new Empty());
-
+        var response = await _countryGrpcService.GetAllAsync(new Empty());
         return response.FromProto();
     }
 
