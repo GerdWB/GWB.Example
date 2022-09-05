@@ -1,13 +1,7 @@
 ﻿@page "/"
 
-@using GWB.Example.Application.Core.Domain.Entities
-@using GWB.Example.Application.Core.Results
-@using GWB.Example.Web.Blazor.Services
 
-
-@inject CountryService CountryService
-
-<MudTable Items="@Countries.Take(3)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+<MudTable Items="@_countries.Take(3)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>Id</MudTh>
         <MudTh>Name</MudTh>
@@ -23,13 +17,4 @@
 <MudSwitch @bind-Checked="_hidePosition">Hide <b>position</b> when Breakpoint=Xs</MudSwitch>
 <MudSwitch @bind-Checked="_loading">Show Loading</MudSwitch>
 
-@code {
-    private bool _hidePosition;
-    private bool _loading;
-    private IEnumerable<Country> Countries = new List<Country>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        Countries = await CountryService.GetAllAsync();
-    }
-}
+<MudButton OnClick="Reload" Variant="Variant.Filled" Size="Size.Large" Color="Color.Tertiary">Reload</MudButton>
