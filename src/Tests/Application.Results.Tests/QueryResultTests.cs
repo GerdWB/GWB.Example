@@ -45,6 +45,20 @@ public class QueryResultTests
         querySuccess.Value.Should().Be(value);
     }
 
+
+    [Fact]
+    public void QuerySuccess_Implicit_Conversion_Should_Work_For_ReferenceTypes()
+    {
+        // Arrange
+        var value = new DateTime();
+
+        // Act
+        var querySuccess = (QuerySuccess<DateTime>)value;
+
+        // Assert
+        querySuccess.Value.Should().Be(value);
+    }
+
     [Fact]
     public void QuerySuccess_Implicit_Conversion_Should_Work_For_String()
     {
