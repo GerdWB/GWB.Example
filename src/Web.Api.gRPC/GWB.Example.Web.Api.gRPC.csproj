@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Web.ProtoBuf\GWB.Example.Web.ProtoBuf.csproj" />
   </ItemGroup>
 
+   <ItemGroup>
+     <Folder Include="Logging\" />
+   </ItemGroup>
+
 </Project>
