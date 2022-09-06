@@ -9,6 +9,16 @@ public abstract record QueryResult<T>(bool IsSuccess)
             ? new QuerySuccess<T>(value)
             : new QueryFailed<T>(new Error("Result of query is null"));
 
+    public static implicit operator T(QueryResult<T> result)
+    {
+        if (result is QuerySuccess<T> success)
+        {
+            return success.Value;
+        }
+
+        throw new ArgumentNullException("QueryFailed! No value available.");
+    }
+
     public bool IsFailure => !IsSuccess;
 }
 

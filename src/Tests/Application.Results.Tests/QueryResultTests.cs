@@ -32,6 +32,21 @@ public class QueryResultTests
         querySuccess.IsFailure.Should().BeFalse();
     }
 
+
+    [Fact]
+    public void QueryResult_Implicit_Conversion_Should_Work_For_ReferenceTypes()
+    {
+        // Arrange
+        var value = DateTime.Now;
+        QueryResult<DateTime> queryResult = (QuerySuccess<DateTime>)value;
+
+        // Act
+        DateTime dateTimeValue = queryResult;
+
+        // Assert
+        dateTimeValue.Should().BeSameDateAs(value);
+    }
+
     [Fact]
     public void QuerySuccess_Implicit_Conversion_Should_Work_For_Integer()
     {
@@ -40,9 +55,11 @@ public class QueryResultTests
 
         // Act
         QuerySuccess<int> querySuccess = value;
+        int intValue = querySuccess;
 
         // Assert
         querySuccess.Value.Should().Be(value);
+        intValue.Should().Be(value);
     }
 
 
