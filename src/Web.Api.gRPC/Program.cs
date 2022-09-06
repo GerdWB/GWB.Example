@@ -13,22 +13,14 @@ builder.Services.ConfigureGrpc();
 
 builder.Services.AddCommandsAndQueries();
 builder.Services.AddCountryServiceMocks();
+builder.Services.ConfigureCors(builder.Configuration);
 
-const string corsPolicy = "_corsPolicy";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(corsPolicy,
-        configurePolicy: policy =>
-        {
-            policy.WithOrigins("https://localhost:7247",
-                    "http://localhost:5152")
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
-});
+//if (builder.Environment.IsDevelopment())
+
+
 var app = builder.Build();
 
-app.UseCors(corsPolicy);
+app.UseCors(CorsServiceConfiguration.CorsPolicyName);
 app.UseHttpsRedirection();
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
 app.MapGrpcReflectionService();
