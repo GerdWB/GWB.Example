@@ -23,7 +23,7 @@ internal static class GrpcServiceConfiguration
             options.ResponseCompressionLevel =
                 CompressionLevel.Optimal; // compression level used if not set on the provider
             options.EnableDetailedErrors = true;
-            options.Interceptors.Add<MetaDataInterceptor>();
+            options.Interceptors.Add<AddMetaDataInterceptor>();
         });
 
         services.AddGrpcReflection();
