@@ -48,6 +48,20 @@ public class QueryResultTests
     }
 
     [Fact]
+    public void QueryResult_Implicit_Conversion_Should_Work_For_ReferenceTypes2()
+    {
+        // Arrange
+        var value = DateTime.Now;
+
+        // Act
+        QueryResult<DateTime> queryResult = value;
+
+        // Assert
+        queryResult.Should().BeOfType<QuerySuccess<DateTime>>();
+    }
+
+
+    [Fact]
     public void QuerySuccess_Implicit_Conversion_Should_Work_For_Integer()
     {
         // Arrange

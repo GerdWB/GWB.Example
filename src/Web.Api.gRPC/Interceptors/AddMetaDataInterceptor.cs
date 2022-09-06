@@ -68,13 +68,20 @@ public class AddMetaDataInterceptor : Interceptor
         UnaryServerMethod<TRequest, TResponse> continuation)
     {
         var sw = Stopwatch.StartNew();
-        if (context.ResponseTrailers.All(x => x.Key != CorrelationIdString))
-        {
-            context.ResponseTrailers.Add(_correlationMetaData);
-        }
+
+        context.ResponseTrailers.Add(_correlationMetaData);
 
         var continuator = await continuation(request, context);
         context.ResponseTrailers.Add(CreateTimingMetadata(sw));
         return continuator;
+    }
+}
+
+public static class ServerCallContextExtensions
+{
+    public static string? CorrelationId(this ServerCallContext serverCallContext)
+    {
+        return serverCallContext.ResponseTrailers.FirstOrDefault(x =>
+            x.Key == AddMetaDataInterceptor.CorrelationIdString)?.Value;
     }
 }

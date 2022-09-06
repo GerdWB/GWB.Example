@@ -11,8 +11,8 @@ internal static class GrpcServiceConfiguration
     {
         services.AddGrpc(options =>
         {
-            options.MaxReceiveMessageSize = 2097152; // 2 MB
-            options.MaxSendMessageSize = 2097152; // 2 MB
+            options.MaxReceiveMessageSize = 521_288; // 500 KB
+            options.MaxSendMessageSize = 521_288; // 500 KB
             options.CompressionProviders = new List<ICompressionProvider>
             {
                 new GzipCompressionProvider(CompressionLevel.Optimal), // gzip
@@ -24,6 +24,7 @@ internal static class GrpcServiceConfiguration
                 CompressionLevel.Optimal; // compression level used if not set on the provider
             options.EnableDetailedErrors = true;
             options.Interceptors.Add<AddMetaDataInterceptor>();
+            options.Interceptors.Add<TraceInterceptor>();
         });
 
         services.AddGrpcReflection();
