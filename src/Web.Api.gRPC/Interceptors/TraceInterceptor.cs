@@ -57,11 +57,11 @@ public class TraceInterceptor : Interceptor
 
     private void LogAfterLeaf(ServerCallContext context)
     {
-        _logger.LogTrace("Before enter {Method} {CorrelationId}", context.Method, context.CorrelationId());
+        _logger.LogTrace("After leaving {Method} {CorrelationId}", context.Method);
     }
 
     private void LogBeforeEnter(ServerCallContext context)
     {
-        _logger.LogTrace("Before enter {Method} {CorrelationId}", context.Method, context.CorrelationId());
+        _logger.LogTrace("Before enter {Method} {CorrelationId}", context.Method);
     }
 }

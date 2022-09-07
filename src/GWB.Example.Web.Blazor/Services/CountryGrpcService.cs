@@ -10,7 +10,8 @@ public class CountryService
 {
     private readonly CountryGrpcService.CountryGrpcServiceClient _countryGrpcService;
 
-    public CountryService(CountryGrpcService.CountryGrpcServiceClient client) => _countryGrpcService = client;
+    public CountryService(CountryGrpcService.CountryGrpcServiceClient client)
+        => _countryGrpcService = client ?? throw new ArgumentNullException(nameof(client));
 
     public async Task<IEnumerable<Country>> GetAllAsync()
     {

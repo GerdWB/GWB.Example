@@ -6,30 +6,20 @@ using Grpc.Core.Interceptors;
 
 public class AddMetaDataInterceptor : Interceptor
 {
-    public const string CorrelationIdString = "CorrelationId";
     public const string DurationString = "Duration";
 
     private static Metadata.Entry CreateTimingMetadata(Stopwatch sw)
         => new(DurationString, sw.Elapsed.TotalMilliseconds.ToString("#0.000 ms"));
 
-    private static Metadata.Entry CreateTrailers(Guid correlationId)
-        => new(CorrelationIdString, correlationId.ToString());
-
-    private readonly Metadata.Entry _correlationMetaData;
-
-    public AddMetaDataInterceptor() => _correlationMetaData = CreateTrailers(Guid.NewGuid());
 
     public override async Task<TResponse> ClientStreamingServerHandler<TRequest, TResponse>(
         IAsyncStreamReader<TRequest> requestStream,
         ServerCallContext context,
         ClientStreamingServerMethod<TRequest, TResponse> continuation)
     {
-        context.ResponseTrailers.Add(_correlationMetaData);
         var sw = Stopwatch.StartNew();
-
         var continuator = await continuation(requestStream, context);
         context.ResponseTrailers.Add(CreateTimingMetadata(sw));
-
         return continuator;
     }
 
@@ -39,12 +29,9 @@ public class AddMetaDataInterceptor : Interceptor
         ServerCallContext context,
         DuplexStreamingServerMethod<TRequest, TResponse> continuation)
     {
-        if (context.ResponseTrailers.All(x => x.Key != CorrelationIdString))
-        {
-            context.ResponseTrailers.Add(_correlationMetaData);
-        }
-
+        var sw = Stopwatch.StartNew();
         await continuation(requestStream, responseStream, context);
+        context.ResponseTrailers.Add(CreateTimingMetadata(sw));
     }
 
 
@@ -54,12 +41,9 @@ public class AddMetaDataInterceptor : Interceptor
         ServerCallContext context,
         ServerStreamingServerMethod<TRequest, TResponse> continuation)
     {
-        if (context.ResponseTrailers.All(x => x.Key != CorrelationIdString))
-        {
-            context.ResponseTrailers.Add(_correlationMetaData);
-        }
-
+        var sw = Stopwatch.StartNew();
         await continuation(request, responseStream, context);
+        context.ResponseTrailers.Add(CreateTimingMetadata(sw));
     }
 
     public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(
@@ -68,20 +52,8 @@ public class AddMetaDataInterceptor : Interceptor
         UnaryServerMethod<TRequest, TResponse> continuation)
     {
         var sw = Stopwatch.StartNew();
-
-        context.ResponseTrailers.Add(_correlationMetaData);
-
         var continuator = await continuation(request, context);
         context.ResponseTrailers.Add(CreateTimingMetadata(sw));
         return continuator;
-    }
-}
-
-public static class ServerCallContextExtensions
-{
-    public static string? CorrelationId(this ServerCallContext serverCallContext)
-    {
-        return serverCallContext.ResponseTrailers.FirstOrDefault(x =>
-            x.Key == AddMetaDataInterceptor.CorrelationIdString)?.Value;
     }
 }
